@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const GITHUB_USERNAME = "SrujanRaghavendraS"; 
 const LEETCODE_USERNAME = "Srujan_Raghavendra_S"; 
 
@@ -12,10 +14,18 @@ const StatCard: React.FC<StatCardProps> = ({ title, imgSrc, imgAlt, link }) => (
   <div className="flex flex-col items-center">
     <h2 className="text-2xl font-bold mb-4">{title}</h2>
     <a href={link} target="_blank" rel="noopener noreferrer">
-      <img src={imgSrc} alt={imgAlt} className="rounded-lg shadow-lg cursor-pointer" />
+      <Image
+        src={imgSrc}
+        alt={imgAlt}
+        width={500} // Adjust based on your design
+        height={250} // Adjust based on your design
+        className="rounded-lg shadow-lg cursor-pointer"
+        unoptimized // Allows external images without Next.js optimization
+      />
     </a>
   </div>
 );
+
 
 
 const Stats = ({ darkMode }: { darkMode: boolean }) => {

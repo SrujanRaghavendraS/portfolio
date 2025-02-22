@@ -1,12 +1,22 @@
-// hooks/useGithubRepos.ts
 import { useEffect, useState } from "react";
 
 const GITHUB_USERNAME = "SrujanRaghavendraS";
 const GITHUB_ACCESS_TOKEN = process.env.NEXT_PUBLIC_GITHUB_ACCESS_TOKEN;
-const GITHUB_GRAPHQL_URL = process.env.GITHUB_GRAPHQL_URL || "https://api.github.com/graphql";
+const GITHUB_GRAPHQL_URL = process.env.NEXT_PUBLIC_GITHUB_GRAPHQL_URL || "https://api.github.com/graphql";
+
+interface Repository {
+  name: string;
+  description: string;
+  url: string;
+  stargazerCount: number;
+  forkCount: number;
+  repositoryTopics: {
+    nodes: { topic: { name: string } }[];
+  };
+}
 
 export const useGithubRepos = () => {
-  const [repos, setRepos] = useState<any[]>([]);
+  const [repos, setRepos] = useState<Repository[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -53,10 +63,9 @@ export const useGithubRepos = () => {
         });
 
         const jsonData = await response.json();
-        console.log("✅ GitHub API Response:", jsonData);
 
         if (!jsonData?.data?.user?.pinnedItems?.nodes) {
-          console.error("❌ GitHub API error: No user data found", jsonData);
+          console.error("❌ GitHub API error: No pinned repositories found", jsonData);
           setError("Failed to load projects.");
         } else {
           setRepos(jsonData.data.user.pinnedItems.nodes);
