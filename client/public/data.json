@@ -1,0 +1,15 @@
+[
+  {
+    "role": "FullStack Intern",
+    "company": "Subhanu Technologies, Bengaluru",
+    "date": "September 2024 - January 2025",
+    "description": "",
+    "achievements": [
+      "Developed backend APIs using FastAPI.",
+      "Created High-Level Design (HLD) and System-Level Design (SLD).",
+      "Contributed to team documentation and Proof of Concepts.",
+      "Worked on MVP-1 for KiddyPy-Smart-AI-Project-Suggester."
+    ],
+    "technologies": ["FastAPI", "Python", "Git", "Postman"],
+    "logo": "https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/e76lxfdw4cjygvsslbyg"}
+]
